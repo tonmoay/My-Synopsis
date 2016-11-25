@@ -21,6 +21,9 @@ public class MySynopsis extends FTPUploader{
         HTMLWriter html = new HTMLWriter();
         html.readData();
         html.exportHTML();*/
+        
+        FTPUploader launch = new FTPUploader();
+        launch.mainFrame();
     }
     
 }
