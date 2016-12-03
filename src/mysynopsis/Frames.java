@@ -6,6 +6,7 @@
 package mysynopsis;
 
 import java.awt.CardLayout;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -46,6 +47,10 @@ public class Frames  {
         ftpexport = new JButton("Upload to FTP");
         ftpexport.setBounds(700,520,130,30);
         
+        
+        
+        one.setVisible(true);
+        
         personal_info = new JButton("PERSONAL INFORMATION");
         personal_info.setBounds(30,50,200,40);
         image_set = new JButton("PICTURE");
@@ -60,6 +65,8 @@ public class Frames  {
         professional.setBounds(30,350,200,40);
         awards = new JButton("ACHIEVED AWARDS");
         awards.setBounds(30,410,200,40);
+        
+        
         
         frame.add(export);
         frame.add(save);
@@ -76,12 +83,16 @@ public class Frames  {
         frame.add(awards);
         
         
+        frame.add(one);
+        
         frame.setResizable(false);
         frame.setLayout(null);
         frame.setSize(870,600);
         frame.setVisible(true);
-        frame.setAlwaysOnTop(true);
+//        frame.setAlwaysOnTop(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        /*       PreviewPage.getSite();*/
     }
 
     

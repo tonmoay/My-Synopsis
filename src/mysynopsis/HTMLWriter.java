@@ -27,7 +27,7 @@ public class HTMLWriter extends JSONReader {
         htmlstr = htmlstr.replace("$department",dept);
         htmlstr = htmlstr.replace("$university",university);
         htmlstr = htmlstr.replace("$officeroom",office);
-        htmlstr = htmlstr.replace("$offcicehours",officehours);
+        htmlstr = htmlstr.replace("$officehours",officehours);
         htmlstr = htmlstr.replace("$phone",phone);
         htmlstr = htmlstr.replace("$email",email);
         htmlstr = htmlstr.replace("$resume",resumelink);

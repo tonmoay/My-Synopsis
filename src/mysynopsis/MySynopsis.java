@@ -5,6 +5,10 @@
  */
 package mysynopsis;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import org.json.simple.parser.ParseException;
+
 /**
  *
  * @author Personal
@@ -13,8 +17,11 @@ public class MySynopsis extends FTPUploader{
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
+     * @throws java.io.FileNotFoundException
+     * @throws org.json.simple.parser.ParseException
      */
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException, FileNotFoundException, ParseException{
         // TODO code application logic here     
          
         /* JSONInit.initSystem();
@@ -24,6 +31,8 @@ public class MySynopsis extends FTPUploader{
         
         FTPUploader launch = new FTPUploader();
         launch.mainFrame();
+        launch.readData();
+        launch.exportHTML();
     }
     
 }
