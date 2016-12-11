@@ -38,11 +38,11 @@ import org.apache.commons.net.ftp.*;
 /**
  *
  * @author Tonmoay Deb
- * 
- * This Class is a basic FTP upload wizard depending on Apache Commons Net Library.
- * 
+ *  
  */
 public abstract class FTPUploader extends Variables {
+    
+    //This Class is a basic FTP upload wizard depending on Apache Commons Net Library.
     
     // This is a GUI that shows the display with JOptionPane on Parent Frame.
     

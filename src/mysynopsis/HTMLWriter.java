@@ -29,12 +29,12 @@ import java.io.IOException;
 import org.apache.commons.io.*;
 /**
  *
- * @author Tonmoay Deb
- * 
- * This Class will write the string data to HTML
+ * @author Tonmoay Deb 
  * 
  */
 public abstract class HTMLWriter extends Variables {
+    
+    //This Class will write the string data to HTML
     
     public static String writeHTML() throws IOException{
         

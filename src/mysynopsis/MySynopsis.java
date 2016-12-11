@@ -31,9 +31,11 @@ import org.json.simple.parser.ParseException;
  *
  * @author Tonmoay Deb
  * 
- * Main Class to launch the system
  */
+
 public class MySynopsis{
+    
+    //Main Class to launch the system
 
     /**
      * @param args the command line arguments

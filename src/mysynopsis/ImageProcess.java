@@ -37,10 +37,10 @@ import org.apache.commons.net.util.Base64;
  *
  * @author Tonmoay Deb
  * 
- * This Class is about Image Encoding & Decoding of BASE64 Encoded Image
- * 
  */
-public class ImageProcess extends Variables {
+public abstract class ImageProcess {
+    
+    //This Class is about Image Encoding & Decoding of BASE64 Encoded Image
     
     /*public static String encodeToString(BufferedImage image, String type) {
     String imageString;
@@ -89,7 +89,7 @@ public class ImageProcess extends Variables {
         
         BufferedImage bufferedImage = null;
         try {
-            byte[] byteArray = Base64.decodeBase64(imgString);
+            byte[] byteArray = Base64.decodeBase64(Variables.imgString);
             
             try (InputStream in = new ByteArrayInputStream(byteArray)) {
                 bufferedImage = ImageIO.read(in);

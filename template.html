@@ -3,11 +3,11 @@
 <title> $title </title>
 </head>
 <body>
-<h2>$name</h2>
+<h2>$name $initial</h2>
 <h3>$desig</h3>
 <h4>$department<br>$university</h4>
 
-<p align="center"><img src="image.jpg" ></p>
+<p align="center"><img src="data:image/$type;base64,$imgStr" ></p>
 <h4>Office Room: <i>$officeroom </i><br>Office Hours: <i>$officehours</i><br>Phone Number: <i>$phone</i><br>Email: <i>$email</i><br>Resume: <i>$resume</i></h4>
 
 
@@ -15,6 +15,11 @@
 <p><h4>$biograph</h4></p>
 <hr>
 
-<h2>Education</h2>
+$educational
+
+$professional
+
+$awards
+
 </body>
 </html>

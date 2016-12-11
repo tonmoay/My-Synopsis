@@ -33,11 +33,10 @@ import org.json.simple.JSONObject;
  *
  * @author Tonmoay Deb
  * 
- * This Class will export all variable data to a JSON ( data.json ) file
- * 
  */
 public abstract class JSONWriter extends Variables {
     
+   //This Class will export all variable data to a JSON ( data.json ) file 
     public static void  writeData() throws IOException {
         
         JSONObject bio = new JSONObject();

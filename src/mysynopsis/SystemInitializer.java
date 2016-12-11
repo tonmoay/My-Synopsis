@@ -37,10 +37,11 @@ import org.json.simple.JSONObject;
  *
  * @author Tonmoay Deb
  * 
- * This Class initializes system & creates files with default value ( if none )
- * 
  */
-public class SystemInitializer {   
+
+public abstract class SystemInitializer {   
+    
+    //This Class initializes system & creates files with default value ( if none )
     /**
      * @throws IOException
      */

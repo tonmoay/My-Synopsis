@@ -35,11 +35,11 @@ import org.json.simple.parser.ParseException;
 /**
  *
  * @author Tonmoay Deb
- * 
- * This Class reads data from data.json file which has been already generated.
- * 
+ *  
  */
 public abstract class JSONReader extends Variables {
+    
+    //This Class reads data from data.json file which has been already generated.
     
     public static void readData() throws FileNotFoundException, IOException, ParseException {
         
