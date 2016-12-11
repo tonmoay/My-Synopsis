@@ -1,25 +1,61 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * The MIT License
+ *
+ * Copyright 2016 Tonmoay Deb <tonmoay.deb@northsouth.edu>.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 package mysynopsis;
 
 import java.awt.CardLayout;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
-
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.URI;
+import java.net.URISyntaxException;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+import javafx.scene.web.HTMLEditor;
 
 /**
  *
- * @author Personal
+ * @author Tonmoay Deb
  */
-public class MotherFrame extends javax.swing.JFrame {
+public class MotherFrame extends Variables {
 
     /**
      * Creates new form MotherFrame
      */
+    static JFrame mframe;
+    HTMLEditor bioInfo, eduInfo, profInfo, awardsInfo;
+    
     public MotherFrame() {
         initComponents();
+        mframe = this;
+        
     }
 
     /**
@@ -39,60 +75,55 @@ public class MotherFrame extends javax.swing.JFrame {
         Export = new javax.swing.JButton();
         Preview = new javax.swing.JButton();
         Upload = new javax.swing.JButton();
-        set_one = new javax.swing.JButton();
-        set_two = new javax.swing.JButton();
-        set_three = new javax.swing.JButton();
-        set_five = new javax.swing.JButton();
+        personalInfoButton = new javax.swing.JButton();
+        pictureButton = new javax.swing.JButton();
+        universityInfoButton = new javax.swing.JButton();
+        eduInfoButton = new javax.swing.JButton();
+        professionaExperienceButton = new javax.swing.JButton();
+        biographyButton = new javax.swing.JButton();
+        awardsButton = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
-        panelOne = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        panelBasic = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        namefield = new javax.swing.JTextField();
-        emailfield = new javax.swing.JTextField();
-        phonefield = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        biofield = new javax.swing.JTextArea();
-        jScrollBar1 = new javax.swing.JScrollBar();
+        initialField = new javax.swing.JTextField(initial);
+        emailfield = new javax.swing.JTextField(email);
+        phonefield = new javax.swing.JTextField(phone);
         jLabel8 = new javax.swing.JLabel();
-        resumefield = new javax.swing.JTextField();
-        panelTwo = new javax.swing.JPanel();
+        resumefield = new javax.swing.JTextField(resumelink);
+        nameField = new javax.swing.JTextField(name);
+        jLabel12 = new javax.swing.JLabel();
+        panelBiography = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        panelImage = new javax.swing.JPanel();
         imageup = new javax.swing.JLabel();
         imageupbtn = new javax.swing.JButton();
-        panelThree = new javax.swing.JPanel();
+        panelUnivInfo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        desigfield = new javax.swing.JTextField();
+        desigfield = new javax.swing.JTextField(designation);
         jLabel2 = new javax.swing.JLabel();
-        deptfield = new javax.swing.JTextField();
+        deptfield = new javax.swing.JTextField(dept);
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        oroomfield = new javax.swing.JTextField();
-        ohoursfield = new javax.swing.JTextField();
-        univfield = new javax.swing.JTextField();
+        oroomfield = new javax.swing.JTextField(office);
+        ohoursfield = new javax.swing.JTextField(officehours);
+        univaddress = new javax.swing.JTextField(universityAddress);
         jLabel13 = new javax.swing.JLabel();
-        univfield1 = new javax.swing.JTextField();
-        panelFour = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        graddurationfield = new javax.swing.JTextField();
-        highfield = new javax.swing.JTextField();
-        highdufield = new javax.swing.JTextField();
-        collegefield = new javax.swing.JTextField();
-        collegedufield = new javax.swing.JTextField();
-        undergradfield = new javax.swing.JTextField();
-        undergraddufield = new javax.swing.JTextField();
-        gradfield = new javax.swing.JTextField();
+        univfield = new javax.swing.JTextField(university);
+        panelEduInfo = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        panelProfInfo = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        panelAwards = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        aboutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("My Synopsis");
+        setResizable(false);
 
         Previous.setText("Previous");
         Previous.addActionListener(new java.awt.event.ActionListener() {
@@ -123,86 +154,161 @@ public class MotherFrame extends javax.swing.JFrame {
         });
 
         SaveAll.setText("Save All");
+        SaveAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveAllActionPerformed(evt);
+            }
+        });
 
         Export.setText("Export as HTML");
+        Export.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExportActionPerformed(evt);
+            }
+        });
 
         Preview.setText("Preview Website");
+        Preview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PreviewActionPerformed(evt);
+            }
+        });
 
         Upload.setText("Upload to FTP");
-
-        set_one.setText("PERSONAL INFORMATION");
-        set_one.addActionListener(new java.awt.event.ActionListener() {
+        Upload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                set_oneActionPerformed(evt);
+                UploadActionPerformed(evt);
             }
         });
 
-        set_two.setText("PICTURE");
-        set_two.addActionListener(new java.awt.event.ActionListener() {
+        personalInfoButton.setText("PERSONAL INFORMATION");
+        personalInfoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                set_twoActionPerformed(evt);
+                personalInfoButtonActionPerformed(evt);
             }
         });
 
-        set_three.setText("DESIGNATION AT UNIVERSITY");
-        set_three.addActionListener(new java.awt.event.ActionListener() {
+        pictureButton.setText("PICTURE");
+        pictureButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                set_threeActionPerformed(evt);
+                pictureButtonActionPerformed(evt);
             }
         });
 
-        set_five.setText("EDUCATIONAL INFORMATION");
-        set_five.addActionListener(new java.awt.event.ActionListener() {
+        universityInfoButton.setText("DESIGNATION AT UNIVERSITY");
+        universityInfoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                set_fiveActionPerformed(evt);
+                universityInfoButtonActionPerformed(evt);
+            }
+        });
+
+        eduInfoButton.setText("EDUCATIONAL INFORMATION");
+        eduInfoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eduInfoButtonActionPerformed(evt);
+            }
+        });
+
+        professionaExperienceButton.setText("PROFESSIONAL EXPERIENCE");
+        professionaExperienceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                professionaExperienceButtonActionPerformed(evt);
+            }
+        });
+
+        biographyButton.setText("BIOGRAPHY");
+        biographyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                biographyButtonActionPerformed(evt);
+            }
+        });
+
+        awardsButton.setText("ACHIEVED AWARDS");
+        awardsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                awardsButtonActionPerformed(evt);
             }
         });
 
         mainPanel.setLayout(new java.awt.CardLayout());
 
-        panelOne.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel3.setText("Biography:");
-        panelOne.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 110, 40));
+        panelBasic.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel4.setText("Name:");
-        panelOne.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 110, 40));
+        jLabel4.setText("Faculty Initial:");
+        panelBasic.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 110, 40));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel5.setText("Email:");
-        panelOne.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 110, 40));
+        jLabel5.setText("Email Address:");
+        panelBasic.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 110, 40));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel6.setText("Resume Link:");
-        panelOne.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 130, 40));
+        panelBasic.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 130, 40));
 
-        namefield.addActionListener(new java.awt.event.ActionListener() {
+        initialField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                namefieldActionPerformed(evt);
+                initialFieldActionPerformed(evt);
             }
         });
-        panelOne.add(namefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 200, 30));
-        panelOne.add(emailfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 200, 30));
-        panelOne.add(phonefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 200, 30));
+        panelBasic.add(initialField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 200, 30));
+        panelBasic.add(emailfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 200, 30));
 
-        biofield.setColumns(20);
-        biofield.setRows(5);
-        jScrollPane1.setViewportView(biofield);
-
-        panelOne.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 400, 150));
-        panelOne.add(jScrollBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, -1, -1));
+        phonefield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phonefieldActionPerformed(evt);
+            }
+        });
+        panelBasic.add(phonefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 200, 30));
 
         jLabel8.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel8.setText("Phone Number:");
-        panelOne.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 130, 40));
-        panelOne.add(resumefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 400, 30));
+        panelBasic.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 130, 40));
+        panelBasic.add(resumefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 380, 30));
 
-        mainPanel.add(panelOne, "panelOne");
+        nameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameFieldActionPerformed(evt);
+            }
+        });
+        panelBasic.add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 200, 30));
 
-        panelTwo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        panelTwo.add(imageup, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 310, 260));
+        jLabel12.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabel12.setText("Full Name:");
+        panelBasic.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 110, 40));
+
+        mainPanel.add(panelBasic, "panelBasic");
+
+        panelBiography.setLayout(new java.awt.BorderLayout());
+        final JFXPanel bioPanel = new JFXPanel();
+
+        panelBiography.add(bioPanel);
+        // Code of sub-components and layout - not shown here
+        Platform.runLater(() -> {
+            bioInfo = new HTMLEditor();
+            Scene bioScene = new Scene(bioInfo);
+            bioInfo.setPrefHeight(245);
+            bioInfo.setPrefWidth(245);
+            bioInfo.setHtmlText(biog);
+            bioPanel.setScene(bioScene);
+        });
+
+        jLabel22.setFont(new java.awt.Font("Arial", 3, 20)); // NOI18N
+        jLabel22.setText("Biography:");
+        panelBiography.add(jLabel22, java.awt.BorderLayout.PAGE_START);
+
+        mainPanel.add(panelBiography, "panelBiography");
+
+        panelImage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        try {
+            imageup.setIcon(new javax.swing.ImageIcon(ImageProcess.toBufferedImage()));
+        }
+
+        catch(Exception x) {
+
+        }
+        panelImage.add(imageup, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 310, 260));
 
         imageupbtn.setText("Upload Image");
         imageupbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -210,163 +316,195 @@ public class MotherFrame extends javax.swing.JFrame {
                 imageupbtnActionPerformed(evt);
             }
         });
-        panelTwo.add(imageupbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 110, 40));
+        panelImage.add(imageupbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 110, 40));
 
-        mainPanel.add(panelTwo, "panelTwo");
+        mainPanel.add(panelImage, "panelImage");
 
-        panelThree.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelUnivInfo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        panelThree.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, 30));
-        panelThree.add(desigfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 270, 30));
+        panelUnivInfo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, 30));
+        panelUnivInfo.add(desigfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 270, 30));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel2.setText("Designation:");
-        panelThree.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 30));
-        panelThree.add(deptfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 270, 30));
+        panelUnivInfo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 30));
+        panelUnivInfo.add(deptfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 270, 30));
 
         jLabel7.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel7.setText("Department:");
-        panelThree.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 30));
+        panelUnivInfo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 30));
 
         jLabel9.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel9.setText("University Address:");
-        panelThree.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, 30));
+        panelUnivInfo.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, 30));
 
         jLabel10.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel10.setText("Office Room:");
-        panelThree.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 30));
+        panelUnivInfo.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 30));
 
         jLabel11.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel11.setText("Office Hours:");
-        panelThree.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 30));
-        panelThree.add(oroomfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 270, 30));
-        panelThree.add(ohoursfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 270, 30));
+        panelUnivInfo.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 30));
+        panelUnivInfo.add(oroomfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 270, 30));
+        panelUnivInfo.add(ohoursfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 270, 30));
+
+        univaddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                univaddressActionPerformed(evt);
+            }
+        });
+        panelUnivInfo.add(univaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 370, 30));
+
+        jLabel13.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabel13.setText("University Name:");
+        panelUnivInfo.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, 30));
 
         univfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 univfieldActionPerformed(evt);
             }
         });
-        panelThree.add(univfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 370, 30));
+        panelUnivInfo.add(univfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 270, 30));
 
-        jLabel13.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel13.setText("University Name:");
-        panelThree.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, 30));
+        mainPanel.add(panelUnivInfo, "panelUnivInfo");
 
-        univfield1.addActionListener(new java.awt.event.ActionListener() {
+        panelEduInfo.setLayout(new java.awt.BorderLayout());
+        final JFXPanel eduPanel = new JFXPanel();
+
+        panelEduInfo.add(eduPanel);
+        // Code of sub-components and layout - not shown here
+        Platform.runLater(() -> {
+            eduInfo = new HTMLEditor();
+            Scene eduScene = new Scene(eduInfo);
+            eduInfo.setPrefHeight(245);
+            eduInfo.setPrefWidth(245);
+            eduInfo.setHtmlText(education);
+            eduPanel.setScene(eduScene);
+        });
+
+        jLabel23.setFont(new java.awt.Font("Arial", 3, 20)); // NOI18N
+        jLabel23.setText("Educational Information");
+        panelEduInfo.add(jLabel23, java.awt.BorderLayout.PAGE_START);
+
+        mainPanel.add(panelEduInfo, "panelEduInfo");
+
+        final JFXPanel profPanel = new JFXPanel();
+        panelProfInfo.setLayout(new java.awt.BorderLayout());
+        panelProfInfo.add(profPanel);
+
+        jLabel21.setFont(new java.awt.Font("Arial", 3, 20)); // NOI18N
+        jLabel21.setText("Your Professional Experience ( Keep Blank if None )");
+        panelProfInfo.add(jLabel21, java.awt.BorderLayout.PAGE_START);
+
+        Platform.runLater(() -> {
+            profInfo = new HTMLEditor();
+            Scene profScene = new Scene(profInfo);
+            profInfo.setPrefHeight(245);
+            profInfo.setPrefWidth(245);
+            profInfo.setHtmlText(professional);
+            profPanel.setScene(profScene);
+        });
+
+        mainPanel.add(panelProfInfo, "panelProfInfo");
+        panelProfInfo.getAccessibleContext().setAccessibleName("");
+
+        panelAwards.setLayout(new java.awt.BorderLayout());
+        final JFXPanel awardsPanel = new JFXPanel();
+
+        panelAwards.add(awardsPanel);
+        // Code of sub-components and layout - not shown here
+        Platform.runLater(() -> {
+            awardsInfo = new HTMLEditor();
+            Scene awardsScene = new Scene(awardsInfo);
+            awardsInfo.setPrefHeight(245);
+            awardsInfo.setPrefWidth(245);
+            awardsInfo.setHtmlText(awards);
+            awardsPanel.setScene(awardsScene);
+        });
+
+        jLabel24.setFont(new java.awt.Font("Arial", 3, 20)); // NOI18N
+        jLabel24.setText("Awards Information ( Keep Blank if None )");
+        panelAwards.add(jLabel24, java.awt.BorderLayout.PAGE_START);
+
+        mainPanel.add(panelAwards, "panelAwards");
+
+        aboutButton.setText("About");
+        aboutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                univfield1ActionPerformed(evt);
+                aboutButtonActionPerformed(evt);
             }
         });
-        panelThree.add(univfield1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 270, 30));
-
-        mainPanel.add(panelThree, "panelThree");
-
-        panelFour.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel12.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel12.setText("Duration:");
-        panelFour.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 210, 40));
-
-        jLabel14.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel14.setText("High School:");
-        panelFour.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 40));
-
-        jLabel15.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel15.setText("Duration:");
-        panelFour.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 110, 40));
-
-        jLabel16.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel16.setText("College Name:");
-        panelFour.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 110, 40));
-
-        jLabel17.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel17.setText("Duration:");
-        panelFour.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 110, 40));
-
-        jLabel18.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel18.setText("Undergrad University:");
-        panelFour.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 210, 40));
-
-        jLabel19.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel19.setText("Duration:");
-        panelFour.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 210, 40));
-
-        jLabel20.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel20.setText("Graduate University");
-        panelFour.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 210, 40));
-        panelFour.add(graddurationfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 140, 30));
-        panelFour.add(highfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 290, 30));
-        panelFour.add(highdufield, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 140, 30));
-        panelFour.add(collegefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 290, 30));
-        panelFour.add(collegedufield, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 140, 30));
-        panelFour.add(undergradfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 290, 30));
-        panelFour.add(undergraddufield, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 140, 30));
-        panelFour.add(gradfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 290, 30));
-
-        mainPanel.add(panelFour, "panelFour");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(set_five, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(set_three, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                    .addComponent(set_one, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(set_two, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(eduInfoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(universityInfoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(personalInfoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pictureButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(professionaExperienceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(biographyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(awardsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(First)
-                .addGap(18, 18, 18)
-                .addComponent(Previous)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(First, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Previous, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Next, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Last, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SaveAll)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Export)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Preview)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Upload)
-                .addGap(37, 37, 37))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(aboutButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(set_one, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(personalInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(set_two, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(biographyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(set_three, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pictureButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(set_five, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(187, 187, 187)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Previous)
+                        .addComponent(universityInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(eduInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(professionaExperienceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(awardsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(Previous, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(First, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Next)
                     .addComponent(Last)
-                    .addComponent(First)
                     .addComponent(SaveAll)
                     .addComponent(Export)
                     .addComponent(Preview)
-                    .addComponent(Upload))
+                    .addComponent(Upload)
+                    .addComponent(aboutButton))
                 .addContainerGap())
         );
 
@@ -379,31 +517,31 @@ public class MotherFrame extends javax.swing.JFrame {
         card.previous(mainPanel);
     }//GEN-LAST:event_PreviousActionPerformed
 
-    private void set_twoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_twoActionPerformed
+    private void pictureButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pictureButtonActionPerformed
         // TODO add your handling code here:
         CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.show(mainPanel, "panelTwo");
-    }//GEN-LAST:event_set_twoActionPerformed
+        card.show(mainPanel, "panelImage");
+    }//GEN-LAST:event_pictureButtonActionPerformed
 
-    private void namefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namefieldActionPerformed
+    private void initialFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initialFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_namefieldActionPerformed
+    }//GEN-LAST:event_initialFieldActionPerformed
 
-    private void set_threeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_threeActionPerformed
-        // TODO add your handling code here:
-        CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.show(mainPanel, "panelThree");
-    }//GEN-LAST:event_set_threeActionPerformed
-
-    private void set_oneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_oneActionPerformed
+    private void universityInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_universityInfoButtonActionPerformed
         // TODO add your handling code here:
         CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.show(mainPanel, "panelOne");
-    }//GEN-LAST:event_set_oneActionPerformed
+        card.show(mainPanel, "panelUnivInfo");
+    }//GEN-LAST:event_universityInfoButtonActionPerformed
 
-    private void univfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_univfieldActionPerformed
+    private void personalInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalInfoButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_univfieldActionPerformed
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "panelBasic");
+    }//GEN-LAST:event_personalInfoButtonActionPerformed
+
+    private void univaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_univaddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_univaddressActionPerformed
 
     private void FirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FirstActionPerformed
         // TODO add your handling code here:
@@ -423,15 +561,16 @@ public class MotherFrame extends javax.swing.JFrame {
         card.next(mainPanel);
     }//GEN-LAST:event_NextActionPerformed
 
-    private void univfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_univfield1ActionPerformed
+    
+    private void univfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_univfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_univfield1ActionPerformed
+    }//GEN-LAST:event_univfieldActionPerformed
 
-    private void set_fiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_fiveActionPerformed
+    private void eduInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eduInfoButtonActionPerformed
         // TODO add your handling code here:
         CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.show(mainPanel, "panelFour");
-    }//GEN-LAST:event_set_fiveActionPerformed
+        card.show(mainPanel, "panelEduInfo");
+    }//GEN-LAST:event_eduInfoButtonActionPerformed
 
     private void imageupbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageupbtnActionPerformed
         // TODO add your handling code here:
@@ -440,42 +579,226 @@ public class MotherFrame extends javax.swing.JFrame {
         choose.showOpenDialog(null);
         
         String path = choose.getSelectedFile().getPath();
-    //    System.out.println(path); 
+        String filename=choose.getSelectedFile().getName();
+        imgExtension = filename.substring(filename.lastIndexOf("."),filename.length());
+        imgExtension = imgExtension.replace(".", "");
+        
+        
+        try {
+            imgString = ImageProcess.toImageString(path);
+        } catch (IOException ex) {
+            Logger.getLogger(MotherFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //    System.out.println(path);
         imageup.setIcon(new javax.swing.ImageIcon(path));
     }//GEN-LAST:event_imageupbtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void PreviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviewActionPerformed
+        // TODO add your handling code here:
+        PreviewPage.mySitePreview();
+    }//GEN-LAST:event_PreviewActionPerformed
+
+    private void SaveAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveAllActionPerformed
+        // TODO add your handling code here:
+        
+        //Get Values from TextFields and set
+        
+        name = nameField.getText();
+        initial = initialField.getText();
+        email = emailfield.getText();
+        phone = phonefield.getText();
+        resumelink = resumefield.getText();
+        
+        biog = bioInfo.getHtmlText();
+        biog = biog.replace("<html dir=\"ltr\"><head></head>","");
+        biog = biog.replace("<body contenteditable=\"true\">","");
+        biog = biog.replace("</body></html>","");
+        
+        designation = desigfield.getText();
+        dept = deptfield.getText();
+        office = oroomfield.getText();
+        officehours = ohoursfield.getText();
+        university = univfield.getText();
+        universityAddress = univaddress.getText();
+        /*educ[0] = highfield.getText();
+        educ[1] = highdufield.getText();
+        educ[2] = collegefield.getText();
+        educ[3] = collegedufield.getText();
+        educ[4] = undergradfield.getText();
+        educ[5] = undergraddufield.getText();
+        educ[6] = gradfield.getText();
+        educ[7] = graddurationfield.getText();*/
+        
+        education = eduInfo.getHtmlText();
+        education = education.replace("<html dir=\"ltr\"><head></head>","");
+        education = education.replace("<body contenteditable=\"true\">","");
+        education = education.replace("</body></html>","");
+        
+        professional = profInfo.getHtmlText();
+        professional = professional.replace("<html dir=\"ltr\"><head></head>","");
+        professional = professional.replace("<body contenteditable=\"true\">","");
+        professional = professional.replace("</body></html>","");
+        
+        awards = awardsInfo.getHtmlText();
+        awards = awards.replace("<html dir=\"ltr\"><head></head>","");
+        awards = awards.replace("<body contenteditable=\"true\">","");
+        awards = awards.replace("</body></html>","");
+        
+      //  System.out.println(professional);
+        
+        EventQueue.invokeLater(() -> {
+            try {
+                JSONWriter.writeData();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this,"Some Error Occured. Please Try Again.");
+            }
+        });
+        JOptionPane.showMessageDialog(this,"Saved Successfully.");
+    }//GEN-LAST:event_SaveAllActionPerformed
+
+    private void ExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportActionPerformed
+
+        
+        // TODO add your handling code here:
+        
+        //Get Values from TextFields and set
+        name = nameField.getText();
+        initial = initialField.getText();
+        email = emailfield.getText();
+        phone = phonefield.getText();
+        resumelink = resumefield.getText();
+        
+        biog = bioInfo.getHtmlText();
+        biog = biog.replace("<html dir=\"ltr\"><head></head>","");
+        biog = biog.replace("<body contenteditable=\"true\">","");
+        biog = biog.replace("</body></html>","");
+        
+        designation = desigfield.getText();
+        dept = deptfield.getText();
+        office = oroomfield.getText();
+        officehours = ohoursfield.getText();
+        university = univfield.getText();
+        universityAddress = univaddress.getText();
+        
+        /* educ[0] = highfield.getText();
+        educ[1] = highdufield.getText();
+        educ[2] = collegefield.getText();
+        educ[3] = collegedufield.getText();
+        educ[4] = undergradfield.getText();
+        educ[5] = undergraddufield.getText();
+        educ[6] = gradfield.getText();
+        educ[7] = graddurationfield.getText(); */
+        
+        education = eduInfo.getHtmlText();
+        education = education.replace("<html dir=\"ltr\"><head></head>","");
+        education = education.replace("<body contenteditable=\"true\">","");
+        education = education.replace("</body></html>","");
+        
+        professional = profInfo.getHtmlText();
+        professional = professional.replace("<html dir=\"ltr\"><head></head>","");
+        professional = professional.replace("<body contenteditable=\"true\">","");
+        professional = professional.replace("</body></html>","");
+        
+        awards = awardsInfo.getHtmlText();
+        awards = awards.replace("<html dir=\"ltr\"><head></head>","");
+        awards = awards.replace("<body contenteditable=\"true\">","");
+        awards = awards.replace("</body></html>","");
+    
+        EventQueue.invokeLater(() -> {
+            try {
+                
+                JOptionPane.showMessageDialog(this,HTMLWriter.writeHTML());
+            } catch (IOException ex) {
+                Logger.getLogger(MotherFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+    }//GEN-LAST:event_ExportActionPerformed
+
+    private void UploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadActionPerformed
+        try {
+            // TODO add your handling code here:
+            FTPUploader.display();
+        } catch (IOException ex) {
+            Logger.getLogger(MotherFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_UploadActionPerformed
+
+    private void professionaExperienceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professionaExperienceButtonActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "panelProfInfo");
+    }//GEN-LAST:event_professionaExperienceButtonActionPerformed
+
+    private void awardsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_awardsButtonActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "panelAwards");
+    }//GEN-LAST:event_awardsButtonActionPerformed
+
+    private void biographyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biographyButtonActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "panelBiography");
+    }//GEN-LAST:event_biographyButtonActionPerformed
+
+    private void phonefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phonefieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phonefieldActionPerformed
+
+    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameFieldActionPerformed
+
+    private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
+        // TODO add your handling code here:
+        
+        String msg = "<html> <br> <b> My Synopsis </b> - A Simple Faculty Profile Builder <br> <br> A CSE215 ( Object Oriented Programming ) Project, North South University <br> <br> Copyright © 2016 Tonmoay Deb ( tonmoay.deb@northsouth.edu ) <br>  <br> Licensed Under MIT License <br> <br> GitHub Link: <a href=\"https://github.com/tonmoay/My-Synopsis\"> https://github.com/tonmoay/My-Synopsis </a></html>";
+        JLabel label = new JLabel(msg);
+        label.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            try {
+                Desktop.getDesktop().browse(new URI("https://github.com/tonmoay/My-Synopsis"));
+            } catch (URISyntaxException | IOException ex) {
+               JOptionPane.showMessageDialog(MotherFrame.mframe,"Can't Open URL");
+            }
+        }
+        });
+   //     label.setFont(new Font("serif", Font.PLAIN, 14));
+        JOptionPane.showConfirmDialog(this, label,"About - My Synopsis",JOptionPane.PLAIN_MESSAGE); 
+        
+        //JOptionPane.showMessageDialog(this,"My Synopsis - A Simple Faculty Profile Builder\nA CSE215 ( Object Oriented Programming ) Project\nNorth South University\nOpen Source Project, Hosted in GitHub\nCopyright © 2016 Tonmoay Deb ( tonmoay.deb@northsouth.edu )\nLicensed Under MIT License\nGitHub Link: https://github.com/tonmoay/My-Synopsis");
+        
+    }//GEN-LAST:event_aboutButtonActionPerformed
+
+   
+    /*public static void main(String args[]) {*/
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MotherFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MotherFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MotherFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MotherFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+    /*try {
+    for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+    if ("Nimbus".equals(info.getName())) {
+    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+    break;
+    }
+    }
+    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+    java.util.logging.Logger.getLogger(MotherFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }*/
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new MotherFrame().setVisible(true);
+        /*    java.awt.EventQueue.invokeLater(() -> {
+        new MotherFrame().setVisible(true);
         });
-    }
+        }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Export;
@@ -486,57 +809,50 @@ public class MotherFrame extends javax.swing.JFrame {
     private javax.swing.JButton Previous;
     private javax.swing.JButton SaveAll;
     private javax.swing.JButton Upload;
-    private javax.swing.JTextArea biofield;
-    private javax.swing.JTextField collegedufield;
-    private javax.swing.JTextField collegefield;
+    private javax.swing.JButton aboutButton;
+    private javax.swing.JButton awardsButton;
+    private javax.swing.JButton biographyButton;
     private javax.swing.JTextField deptfield;
     private javax.swing.JTextField desigfield;
+    private javax.swing.JButton eduInfoButton;
     private javax.swing.JTextField emailfield;
-    private javax.swing.JTextField graddurationfield;
-    private javax.swing.JTextField gradfield;
-    private javax.swing.JTextField highdufield;
-    private javax.swing.JTextField highfield;
     private javax.swing.JLabel imageup;
     private javax.swing.JButton imageupbtn;
+    private javax.swing.JTextField initialField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JTextField namefield;
+    private javax.swing.JTextField nameField;
     private javax.swing.JTextField ohoursfield;
     private javax.swing.JTextField oroomfield;
-    private javax.swing.JPanel panelFour;
-    private javax.swing.JPanel panelOne;
-    private javax.swing.JPanel panelThree;
-    private javax.swing.JPanel panelTwo;
+    private javax.swing.JPanel panelAwards;
+    private javax.swing.JPanel panelBasic;
+    private javax.swing.JPanel panelBiography;
+    private javax.swing.JPanel panelEduInfo;
+    private javax.swing.JPanel panelImage;
+    private javax.swing.JPanel panelProfInfo;
+    private javax.swing.JPanel panelUnivInfo;
+    private javax.swing.JButton personalInfoButton;
     private javax.swing.JTextField phonefield;
+    private javax.swing.JButton pictureButton;
+    private javax.swing.JButton professionaExperienceButton;
     private javax.swing.JTextField resumefield;
-    private javax.swing.JButton set_five;
-    private javax.swing.JButton set_one;
-    private javax.swing.JButton set_three;
-    private javax.swing.JButton set_two;
-    private javax.swing.JTextField undergraddufield;
-    private javax.swing.JTextField undergradfield;
+    private javax.swing.JTextField univaddress;
+    private javax.swing.JButton universityInfoButton;
     private javax.swing.JTextField univfield;
-    private javax.swing.JTextField univfield1;
     // End of variables declaration//GEN-END:variables
 }
